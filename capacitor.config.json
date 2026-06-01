@@ -1,0 +1,6 @@
+{
+  "appId": "com.secure.contacts",
+  "appName": "Secure Contacts",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

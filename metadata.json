@@ -1,0 +1,8 @@
+{
+  "name": "Secure Contacts & Dialer Suite",
+  "description": "تطبيق جهات اتصال رسمي متطور للهاتف مع مسجل مكالمات أوتوماتيكي ومخازن ملفات مدمجة ومذكرات سرية مشفرة بكلمات مرور وأكواد اتصال ذكية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
