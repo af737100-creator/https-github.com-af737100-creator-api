@@ -1078,17 +1078,12 @@ export default function App() {
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-950/40 text-indigo-300 border border-indigo-500/30 rounded-full text-[10px] font-mono">
                   <Github className="w-3.5 h-3.5" />
-                  <span>{lang === "ar" ? "بوابة تصدير الـ GitHub المباشرة" : "GitHub Direct Exporter Gateway"}</span>
+                  <span>{lang === "ar" ? "بوابة الكود المصدري المباشرة" : "Source Code Gateway"}</span>
                 </div>
-                <h3 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+                <h3 className="text-lg sm:text-xl font-black text-white flex items-center gap-2 font-sans">
                   <Sparkles className="w-5 h-5 text-emerald-400" />
-                  <span>{lang === "ar" ? "تصدير الكود تلقائياً وبناء الـ APK" : "1-Click GitHub Export & APK Assembler"}</span>
+                  <span>{lang === "ar" ? "تحميل مشروعك وبدء التشغيل الفوري" : "Download & Build APK Manual"}</span>
                 </h3>
-                <p className="text-xs text-zinc-400 leading-normal font-sans">
-                  {lang === "ar" 
-                    ? "بوابة متكاملة لتصنيع نسختك وتحديث مستودعك الخاص بكبسة زر واحدة من داخل التطبيق دون الحاجة للمزامنة اليدوية!" 
-                    : "Automatic pipeline to publish and update your repository from inside the app with a single click!"}
-                </p>
               </div>
 
               {/* Tab Selector Switcher */}
@@ -1097,13 +1092,13 @@ export default function App() {
                   onClick={() => { setGitModalTab("direct"); playSystemBeep(523, 0.08, 0.02); }}
                   className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${gitModalTab === "direct" ? "bg-indigo-600/20 text-indigo-300 border border-indigo-500/30" : "text-zinc-400 hover:text-white"}`}
                 >
-                  {lang === "ar" ? "🚀 تصدير مباشر بكبسة واحدة" : "🚀 Direct 1-Click Export"}
+                  {lang === "ar" ? "📥 تحميل كود المشروع ZIP" : "📥 Download Project ZIP"}
                 </button>
                 <button
                   onClick={() => { setGitModalTab("demo"); playSystemBeep(523, 0.08, 0.02); }}
                   className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${gitModalTab === "demo" ? "bg-indigo-600/20 text-indigo-300 border border-indigo-500/30" : "text-zinc-400 hover:text-white"}`}
                 >
-                  {lang === "ar" ? "🎮 دليل ومحاكي البناء التلقائي" : "🎮 Step-by-Step Guide"}
+                  {lang === "ar" ? "🎮 دليل وجدول تجميع الـ APK" : "🎮 Step-by-Step Guide"}
                 </button>
               </div>
 
@@ -1114,144 +1109,46 @@ export default function App() {
                     <div className="bg-[#0b0e17] border border-indigo-500/20 p-4 rounded-2xl space-y-1.5 text-[11.5px] leading-relaxed text-zinc-350">
                       <p className="font-bold text-white flex items-center gap-1.5 text-xs">
                         <Sparkles className="w-4 h-4 text-emerald-400" />
-                        <span>{lang === "ar" ? "مزامنة آلية فائقة السرعة لمستودعك" : "Instant Cloud Exporter Sync"}</span>
+                        <span>{lang === "ar" ? "مزامنة جيت هاب المباشرة والآمنة" : "Secure Direct Platform Sync"}</span>
                       </p>
                       <p>
                         {lang === "ar" 
-                          ? "قم بتوفير رمز الوصول (Token) الخاص بك، وسوف يعقد التطبيق اتصالاً آمناً برمجياً لخلق مستودع جيت هاب جديد وتحديثه بكامل الملفات، بما في ذلك ملف تجميع الـ APK المدمج تلقائياً!" 
-                          : "Provide your token below to automatically push your entire workspace to your custom repository instantly, including native files and setup assets."}
+                          ? "يتوفر في شريط أدوات منصة قوقل AI Studio (بالأعلى على اليمين) زر مخصص ومباشر لربط ومزامنة مستودعك الخاص ومزامنة الكود بالكامل تلقائياً بكل أمان وبدون إدخال أي كلمات مرور أو رموز وصول سرية (Token) داخل كود التطبيق!" 
+                          : "Google AI Studio's utility header (top-right corner) features a built-in 'Sync with GitHub' option that updates your repository natively with zero password configuration needed!"}
                       </p>
                     </div>
 
-                    {/* Inputs */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-[11px] font-bold text-zinc-400 block">
-                          {lang === "ar" ? "اسم مستخدم جيت هاب (Username) *" : "GitHub Username *"}
-                        </label>
-                        <input 
-                          type="text"
-                          placeholder="e.g. ahmed-coder"
-                          value={gitUsername}
-                          onChange={(e) => setGitUsername(e.target.value)}
-                          className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:border-indigo-500 focus:outline-none placeholder-zinc-650"
-                        />
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <label className="text-[11px] font-bold text-zinc-400 block">
-                          {lang === "ar" ? "اسم المستودع (Repo Name) *" : "Repository Name *"}
-                        </label>
-                        <input 
-                          type="text"
-                          placeholder="secure-contacts-app"
-                          value={gitRepo}
-                          onChange={(e) => setGitRepo(e.target.value)}
-                          className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:border-indigo-500 focus:outline-none placeholder-zinc-650"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-[11px] font-bold text-zinc-400 flex justify-between block">
-                        <span>{lang === "ar" ? "رمز الوصول الشخصي لجيت هاب (GitHub Token) *" : "Personal Access Token (PAT) *"}</span>
-                        <a 
-                          href="https://github.com/settings/tokens/new?scopes=repo&description=SecureContactsSync"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-indigo-400 hover:underline text-[10px] font-extrabold"
-                        >
-                          {lang === "ar" ? "إنشاء الرمز الآن بسهولة 🔗" : "Generate Token 🔗"}
-                        </a>
-                      </label>
-                      <input 
-                        type="password"
-                        placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                        value={gitToken}
-                        onChange={(e) => setGitToken(e.target.value)}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white font-mono focus:border-indigo-500 focus:outline-none placeholder-zinc-650"
-                      />
-                      <p className="text-[10px] text-zinc-500 italic">
-                        {lang === "ar" 
-                          ? "ملاحظة آمنة: هذا الرمز مشفر ومحفوظ محلياً بجهازك لا يرسل لأي سيرفر خارجي إطلاقاً." 
-                          : "Privacy Note: Token is securely stored inside local secure-state sandbox and connects directly to GitHub."}
+                    <div className="p-4 bg-slate-950/60 rounded-2xl border border-slate-850 space-y-1.5 text-[11.5px]">
+                      <p className="font-bold text-indigo-400 flex items-center gap-1.5">
+                        <Download className="w-4 h-4 text-indigo-400" />
+                        <span>{lang === "ar" ? "تصدير الكود فوراً بكبسة واحدة وبدون حساب" : "Instant No-Account ZIP Export"}</span>
+                      </p>
+                      <p className="text-zinc-400 text-[11px]">
+                        {lang === "ar"
+                          ? "اضغط أدناه لتحميل حزمة الكود المصدري للمشروع كملف ZIP مدمج ومعد بالكامل فورا للعمل مع Capacitor وبيئات أندرويد."
+                          : "Export the full Android Capacitor codebase inside a compressed package instantly below."}
                       </p>
                     </div>
 
-                    {/* Private repository option */}
-                    <div className="flex items-center gap-3 bg-slate-950/40 p-3 rounded-xl border border-slate-850">
-                      <input 
-                        type="checkbox"
-                        id="private_repo_toggle"
-                        checked={gitPrivate}
-                        onChange={(e) => setGitPrivate(e.target.checked)}
-                        className="w-4 h-4 text-indigo-500 bg-slate-950 border-slate-800 rounded focus:ring-indigo-500 cursor-pointer"
-                      />
-                      <label htmlFor="private_repo_toggle" className="text-xs text-zinc-350 font-bold cursor-pointer select-none">
-                        {lang === "ar" ? "تفعيل مستودع خاص وآمن (Private Repository) لحماية كودك" : "Create Repository as Private (Recommended)"}
-                      </label>
-                    </div>
-
-                    {/* Output and Sync console */}
-                    {gitSyncStatus !== "idle" && (
-                      <div className="p-4 bg-slate-950 rounded-2xl border border-slate-850 space-y-3 font-mono text-[11px] animate-fade-in">
-                        <div className="flex justify-between items-center text-[10px] text-zinc-400">
-                          <span className="flex items-center gap-2">
-                            <span className={`${gitSyncStatus === "success" ? "bg-emerald-500" : gitSyncStatus === "failed" ? "bg-rose-500" : "bg-indigo-500 animate-ping"} w-1.5 h-1.5 rounded-full`} />
-                            <span className="capitalize text-zinc-300 font-bold">{gitSyncStatus.replace("_", " ")}</span>
-                          </span>
-                          <span>{gitSyncProgressPercent}%</span>
-                        </div>
-
-                        {/* Progress Bar */}
-                        <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
-                          <div 
-                            className={`h-full rounded-full transition-all duration-300 ${gitSyncStatus === "success" ? "bg-emerald-500" : gitSyncStatus === "failed" ? "bg-rose-500" : "bg-indigo-500"}`}
-                            style={{ width: `${gitSyncProgressPercent}%` }}
-                          />
-                        </div>
-
-                        <p className={`text-[10.5px] leading-relaxed ${gitSyncStatus === "success" ? "text-emerald-400" : gitSyncStatus === "failed" ? "text-rose-400" : "text-zinc-300"}`}>
-                          {gitSyncProgressMsg}
-                        </p>
-
-                        {gitSyncError && (
-                          <p className="text-[10px] text-rose-500 font-bold mt-1 bg-rose-950/20 p-2 rounded-lg border border-rose-900/30">
-                            {gitSyncError}
-                          </p>
-                        )}
-                      </div>
-                    )}
-
-                    {/* Primary sync button */}
-                    <div className="flex gap-3">
-                      <button
-                        onClick={handleRealExportToGithub}
-                        disabled={gitSyncStatus === "auth_checking" || gitSyncStatus === "creating_repo" || gitSyncStatus === "uploading_files"}
-                        className="flex-grow py-3 px-4 bg-gradient-to-r from-indigo-650 via-indigo-550 to-indigo-650 hover:from-indigo-550 hover:to-indigo-450 disabled:bg-indigo-600/30 text-white text-xs font-black uppercase rounded-2xl transition-all cursor-pointer shadow-lg shadow-indigo-600/20 active:scale-95 flex items-center justify-center gap-2"
-                      >
-                        <Github className={`w-4.5 h-4.5 ${gitSyncStatus === "uploading_files" ? "animate-spin" : "animate-pulse"}`} />
-                        <span>
-                          {gitSyncStatus === "uploading_files" 
-                            ? (lang === "ar" ? "جاري تجميع ورفع الملفات بأمان..." : "Exporting elements...")
-                            : (lang === "ar" ? "تصدير ومزامنة المستودع الفعلي بكبسة واحدة 🚀" : "Export Entire Codebase to GitHub 🚀")}
-                        </span>
-                      </button>
-                      
-                      {gitSyncStatus !== "idle" && (
-                        <button
-                          onClick={() => {
-                            setGitSyncStatus("idle");
-                            setGitSyncProgressPercent(0);
-                            setGitSyncProgressMsg("");
-                            setGitSyncError("");
-                          }}
-                          className="px-4 py-3 bg-slate-800 hover:bg-slate-755 text-zinc-305 text-xs rounded-xl cursor-pointer"
-                        >
-                          {lang === "ar" ? "إعادة تعيين" : "Reset"}
-                        </button>
-                      )}
-                    </div>
+                    {/* Primary direct ZIP download button */}
+                    <button
+                      onClick={handleExportZip}
+                      disabled={isExportingZip}
+                      className="w-full py-3 px-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 hover:from-emerald-500 hover:to-teal-500 disabled:opacity-50 text-slate-950 text-xs font-black uppercase rounded-2xl transition-all cursor-pointer shadow-lg shadow-emerald-600/25 active:scale-95 flex items-center justify-center gap-2"
+                    >
+                      <Download className={`w-4.5 h-4.5 ${isExportingZip ? "animate-bounce" : ""}`} />
+                      <span>
+                        {isExportingZip 
+                          ? (lang === "ar" ? "جاري التجميع والتحميل الآن..." : "Compiling package...")
+                          : (lang === "ar" ? "تحميل الكود البرمجي بالكامل فوراً (ZIP) 📦" : "Download Complete Project Package (ZIP) 📦")}
+                      </span>
+                    </button>
+                    
+                    <p className="text-[10px] text-center text-zinc-500 italic">
+                      {lang === "ar"
+                        ? "ملاحظة: هذا الملف يحتوي على تكوين الأندرويد التلقائي لإنشاء ملفات تثبيت apk مباشرة."
+                        : "Note: Package contains capacitor runtime, asset sets, and android build configs."}
+                    </p>
                   </div>
                 ) : (
                   <div className="space-y-3.5">
@@ -1403,17 +1300,17 @@ export default function App() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {/* Direct GitHub Exporter Button in Header */}
+            {/* Direct ZIP Exporter Button in Header */}
             <button
               onClick={() => {
-                setShowGithubWizard(true);
-                setGitModalTab("direct");
+                handleExportZip();
                 playSystemBeep(523, 0.08, 0.02);
               }}
-              className="px-3.5 py-1.5 rounded-lg bg-indigo-650 hover:bg-indigo-550 border border-indigo-500/50 text-[11px] text-white font-black flex items-center gap-1.5 transition-all cursor-pointer shadow-md shadow-indigo-600/30 active:scale-95 animate-pulse"
+              disabled={isExportingZip}
+              className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 border border-emerald-500/50 text-[11px] text-zinc-950 font-black flex items-center gap-1.5 transition-all cursor-pointer shadow-md shadow-emerald-600/30 active:scale-95 duration-200"
             >
-              <Github className="w-3.5 h-3.5" />
-              <span>{lang === "ar" ? "تصدير للـ GitHub 🚀" : "Direct Export to GitHub 🚀"}</span>
+              <Download className={`w-3.5 h-3.5 ${isExportingZip ? "animate-bounce" : ""}`} />
+              <span>{lang === "ar" ? "تحميل كود المشروع (ZIP) 📦" : "Download Code (ZIP) 📦"}</span>
             </button>
 
             {/* Lang switcher */}
